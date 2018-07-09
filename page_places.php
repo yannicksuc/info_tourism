@@ -3,7 +3,7 @@ require_once('places.php');
 
 add_action( 'admin_enqueue_scripts', 'mw_enqueue_tourism_place' );
 function mw_enqueue_tourism_place( $hook_suffix ) {
-    wp_enqueue_script( 'page-places-js', plugins_url('page_places.js', __FILE__ ));
+    wp_enqueue_script( 'page-places-js', plugins_url('info_tourism.js', __FILE__ ));
     wp_enqueue_style( 'info-tourism-css', plugins_url('info_tourism.css', __FILE__ ));
 }
 
@@ -56,7 +56,7 @@ function info_tourism_print_clickable_categories($categories, $activated_categor
     foreach ($categories as &$category) {
         $checked = (($activated_categories && in_array($category, $activated_categories)) ? 'checked' : '');
         echo '<div><span class="tourism-tag justified-tag spaced-tag" style="background-color: #'.$category['color'].'">';
-        echo '<input '.$checked.' name="places_categories[]" type="checkbox" value="'.$category['id'].'" />';
+        echo '<input class="info-tourism-map-receiver" '.$checked.' name="places_categories[]" type="checkbox" value="'.$category['id'].'" />';
         echo '<span>'.$category['name'].'</span></span></div>';
         ++$i;
     }
@@ -105,14 +105,15 @@ function info_tourism_place() {
                         </table>
                     </td>
                 </tr>
+                <?php InfoTourismMap::printMap(); ?>
                 <tr class="form-field form-required">
                     <th scope="row"><label for="place_name">Place Name <span class="description">(required)</span></label></th>
-                    <td colspan="2"><input name="place_name" type="text" id="place_name" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
+                    <td colspan="2"><input class="info-tourism-map-receiver address" name="place_name" type="text" id="place_name" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
                 </tr>
                 <tr class="form-field form-required gps-coord">
                     <th scope="row"><label for="longitude">Coordonées GPS <span class="description">(required)</span></label></th>
-                    <td><input id="longitude" name="longitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Longitude"></td>
-                    <td><input id="latitude" name="latitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Latitude"></td>
+                    <td><input class="info-tourism-map-receiver longitude"id="longitude" name="longitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Longitude"></td>
+                    <td><input class="info-tourism-map-receiver latitude" id="latitude" name="latitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Latitude"></td>
                 </tr>
                 <tr class="form-field form-required place-categories">
                     <th scope="row"><label for="place_categories">Place Categories <span class="description">(optional)</span></label></th>
