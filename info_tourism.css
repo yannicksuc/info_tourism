@@ -1,0 +1,74 @@
+form#add_place_form > p {
+    display: inline-block;
+}
+
+form#add_place_form > p:nth-last-child(2) {
+    margin: 0 10px;
+}
+
+table.widefat th {
+    font-weight: normal;
+    padding: 9px 10px 7px 0;
+}
+
+table.form-table input[type=radio] {
+    margin-top: 0;
+}
+
+.form-field input[type=number],
+.form-field input[type=text]{
+    width: 100%;
+}
+
+tr#selected-row {
+    background-color: #00b9eb;
+}
+
+tr#selected-row > th {
+    color: #fff !important;
+}
+
+
+/* Tourism Tag */
+
+div.tag-wrapper div {
+    display: inline-block;
+}
+
+span.tourism-tag {
+    padding: 4px 10px;
+    margin: 0px 5px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+}
+
+span.tourism-tag input {
+    display: inline-block;
+}
+
+div.tag-wrapper div span.justified-tag {
+    width: 80px;
+}
+
+span.justified-tag {
+    width: 60px;
+    text-align: center;
+    display: inline-block;
+}
+
+span.spaced-tag {
+    margin: 5px 5px;
+}
+
+/* Places table */
+
+table.selectable-places {
+    cursor: pointer;
+}
+
+table.selectable-places th {
+    vertical-align: middle;
+    padding-left: 5px;
+}
