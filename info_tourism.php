@@ -13,6 +13,7 @@ require_once('places.php');
 require_once('categories.php');
 require_once('page_categories.php');
 require_once('page_places.php');
+require_once('Map.php');
 
 $plugin_name = "Info Tourism";
 
@@ -33,6 +34,7 @@ function info_tourism_global() {
         return;
     }
     $categories = new Categories;
+    InfoTourismMap::printMap();
     ?>
     <div class="wrap">
     <h1>Settings</h1>
