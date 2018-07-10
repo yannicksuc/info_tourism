@@ -80,8 +80,7 @@ function info_tourism_place() {
                 <tbody>
                 <tr>
                     <th scope="row" style="line-height: 165%;">
-                        <label for="place_name">Prefill<span class="description"> (optional)</span></label> or
-                        <input type="button" class="button button-small" value="Clear" aria-label="Clear selected place" id="place-clear">
+                        <label for="place_name">Prefill<span class="description"> (optional)</span></label>
                     </th>
                     <td colspan="2">
                         <table class="widefat selectable-places">
@@ -105,15 +104,18 @@ function info_tourism_place() {
                         </table>
                     </td>
                 </tr>
-                <?php InfoTourismMap::printMap(); ?>
+                <tr class="form-field form-required">
+                    <th scope="row"><label for="place_name">Prefill from map <span class="description">(optional)</span></label></th>
+                    <td colspan="2"> <?php InfoTourismMap::printMap(); ?> </td>
+                </tr>
                 <tr class="form-field form-required">
                     <th scope="row"><label for="place_name">Place Name <span class="description">(required)</span></label></th>
                     <td colspan="2"><input class="info-tourism-map-receiver address" name="place_name" type="text" id="place_name" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60"></td>
                 </tr>
                 <tr class="form-field form-required gps-coord">
                     <th scope="row"><label for="longitude">Coordonées GPS <span class="description">(required)</span></label></th>
-                    <td><input class="info-tourism-map-receiver longitude"id="longitude" name="longitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Longitude"></td>
-                    <td><input class="info-tourism-map-receiver latitude" id="latitude" name="latitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Latitude"></td>
+                    <td><input class="info-tourism-map-receiver longitude"  step="any" id="longitude" name="longitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Longitude"></td>
+                    <td><input class="info-tourism-map-receiver latitude" step="any" id="latitude" name="latitude" type="number" value="" aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" placeholder="Latitude"></td>
                 </tr>
                 <tr class="form-field form-required place-categories">
                     <th scope="row"><label for="place_categories">Place Categories <span class="description">(optional)</span></label></th>
@@ -125,6 +127,7 @@ function info_tourism_place() {
             </table>
             <?php submit_button("Add", 'primary', 'submit_add_place') ?>
             <?php submit_button("Update", '', 'submit_update_place') ?>
+            <p><button type="button" name="place-clear" id="place-clear" class="button" value="Clear">Clear</button></p>
             <?php submit_button("Delete", '', 'submit_delete_place') ?>
         </form>
     </div>

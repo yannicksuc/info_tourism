@@ -2,8 +2,8 @@ form#add_place_form > p {
     display: inline-block;
 }
 
-form#add_place_form > p:nth-last-child(2) {
-    margin: 0 10px;
+form#add_place_form > p {
+    margin-right: 10px;
 }
 
 table.widefat th {
@@ -71,4 +71,10 @@ table.selectable-places {
 table.selectable-places th {
     vertical-align: middle;
     padding-left: 5px;
+}
+
+/* Map in Place manager */
+
+#add_place_form #info-tourism-map {
+    height: 30vw;
 }

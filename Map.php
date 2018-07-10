@@ -14,8 +14,8 @@ class InfoTourismMap
     }
 
     public static function printMap() {
+        echo '<input id="info-tourism-searchbar" type="text" placeholder="Search Place">';
+        echo '<div id="info-tourism-map"></div>';
         InfoTourismMap::includeDependencies();
-        echo '<input id="info-tourism-searchbar" type="text" placeholder="Search Box">';
-        echo '<div id="info-tourism-map" style="height: 100vh;"></div>';
     }
 }

@@ -2,6 +2,10 @@ jQuery(document).ready(function($){
     $('.category-color-field').wpColorPicker();
 });
 
+jQuery('form input').on('keypress', function(e) {
+    return e.which !== 13;
+});
+
 //Places form
 
 jQuery(document).on('click', '.change-updatable-place', function () {
@@ -52,11 +56,11 @@ function pinSymbol(color) {
     };
 }
 
-function fillReceivers($place) {
+function fillReceivers(place) {
     clearPlaces();
-    jQuery('.info-tourism-map-receiver.address').val("POMME");
-    jQuery('.info-tourism-map-receiver.longitude').val("3333");
-    jQuery('.info-tourism-map-receiver.latitude').val("3333");
+    jQuery('.info-tourism-map-receiver.address').val(place.formatted_address);
+    jQuery('.info-tourism-map-receiver.longitude').val(place.geometry.location.lng());
+    jQuery('.info-tourism-map-receiver.latitude').val(place.geometry.location.lat());
 }
 
 function initAutocomplete() {
@@ -72,7 +76,7 @@ function initAutocomplete() {
         let places = searchBox.getPlaces();
         if (places.length === 0)
             return;
-        fillReceivers(places);
+        fillReceivers(places[0]);
         markers.forEach(function(marker) {
             marker.setMap(null);
         });
